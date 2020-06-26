@@ -3,7 +3,6 @@ import sys
 import random
 import time
 
-
 #screen size
 WIDTH =800
 HEIGHT = 600
@@ -15,20 +14,18 @@ space = 1
 sorting = False
 bars = []
 
-
-
-
+#initial blue bars
 blue = (0, 0, 255)
 
 
-
+#run screen, fonts and algorithm runtime
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 font = pygame.font.SysFont('Arial', 30)
 clock = pygame.time.Clock()
 screen.fill((255, 255, 255))
 
-
+#Bubble sort function
 def bubbleSort(array):
     elapsed = clock.tick(1)
     n = len(array)
@@ -55,6 +52,7 @@ def bubbleSort(array):
                 pygame.quit()
                 sys.exit()
 
+# THE 'SORT' BUTTON TO SORT ARRAY
 def button(msg,x,y,w,h,ic,ac):
     mouse = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
@@ -70,22 +68,24 @@ def button(msg,x,y,w,h,ic,ac):
 
     text = font.render(msg, True, (0,0,0))
     screen.blit(text, (x+10, y+10))
-
+    
+    
+#SET UP BARS
 def draw_bar(x, height, color):
     pygame.draw.rect(screen, color, (x, 400, bar_width, height), 0)
     bars.append(height)
 
 
-
+#CENTER THE BARS
 for i in range(num_bars):
     height = random.randint(-100, -10)
     x = (i * bar_width) + (i * space) + (WIDTH - (num_bars * bar_width + num_bars * space))/2
     draw_bar(x, height, blue)
 
+#BUTTON COLOR, EXIT PYGAME WHEN NEEDED    
 while True:
     button('Sort', 200-75/2, 200-25, 75, 50, (230, 230, 230), (200, 200, 200))
     pygame.display.update()
-
     if sorting:
         break
     for event in pygame.event.get():
@@ -94,5 +94,5 @@ while True:
             sys.exit()
 
 
-
+#FUNCTION CALL
 bubbleSort(bars)
