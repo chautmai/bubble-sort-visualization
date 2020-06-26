@@ -7,3 +7,6 @@ moves its location based on the smaller and larger values in the array.
 
 This project has given me a clearer visualization of how Bubble Sort works in action
 and is a great way to interact with the Pygamme module to create a fun, interactive projects.
+
+![](images/first.png)
+![](images/second.png)
